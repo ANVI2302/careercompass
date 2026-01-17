@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000/api/v1";
+const API_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 
 export interface ApiUser {
     id: string;
@@ -297,6 +297,45 @@ export const api = {
             headers: { Authorization: `Bearer ${token}` }
         });
         if (!response.ok) throw new Error("Failed to fetch unread count");
+        return response.json();
+    },
+
+    // Settings
+    async getSettings(token: string) {
+        const response = await fetch(`${API_URL}/users/settings`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        if (!response.ok) throw new Error("Failed to fetch settings");
+        return response.json();
+    },
+
+    async updateNotificationSettings(token: string, settings: any) {
+        const response = await fetch(`${API_URL}/users/settings/notifications`, {
+            method: "PATCH",
+            headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(settings)
+        });
+        if (!response.ok) throw new Error("Failed to update notification settings");
+        return response.json();
+    },
+
+    async updatePrivacySettings(token: string, settings: any) {
+        const response = await fetch(`${API_URL}/users/settings/privacy`, {
+            method: "PATCH",
+            headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(settings)
+        });
+        if (!response.ok) throw new Error("Failed to update privacy settings");
+        return response.json();
+    },
+
+    async changePassword(token: string, data: { current_password: string; new_password: string }) {
+        const response = await fetch(`${API_URL}/users/settings/password`, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+        if (!response.ok) throw new Error("Failed to change password");
         return response.json();
     }
 };

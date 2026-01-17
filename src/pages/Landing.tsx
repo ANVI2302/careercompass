@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { ArrowRight, BrainCircuit, Sprout, Building2, Cpu, Globe, Terminal, ChevronRight, Activity, ShieldCheck, Zap } from 'lucide-react'
+import { ArrowRight, BrainCircuit, Sprout, Building2, Globe, Terminal, ChevronRight, Activity, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '@/context/AuthContext'
 

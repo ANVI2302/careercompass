@@ -13,9 +13,10 @@ interface User {
 
 interface AuthContextType {
     user: User | null;
+    token: string | null;
     isAuthenticated: boolean;
-    login: (email: string, password: string) => Promise<void>;
-    register: (email: string, name: string, password: string) => Promise<void>;
+    login: (email: string) => Promise<void>;
+    register: (email: string, name: string) => Promise<void>;
     logout: () => void;
     updateUser: (data: Partial<User>) => Promise<void>;
     isLoading: boolean;
@@ -25,6 +26,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
+    const [token, setToken] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -40,7 +42,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setIsLoading(false);
     }, []);
 
-    const login = async (email: string, password: string) => {
+    const login = async (email: string) => {
         // Mock login - no credential validation
         const mockUser: User = {
             id: Math.random().toString(36).substr(2, 9),
@@ -57,8 +59,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         navigate('/profile');
     };
 
-    const register = async (email: string, name: string, password: string) => {
+    const register = async (email: string, name: string) => {
         // Mock registration - no database save
+        const mockToken = `mock_token_${Math.random().toString(36).substr(2, 9)}`;
         const mockUser: User = {
             id: Math.random().toString(36).substr(2, 9),
             name: name,
@@ -68,15 +71,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             skills: [],
             avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${name}`
         };
-        
+
         setUser(mockUser);
+        setToken(mockToken);
         localStorage.setItem('mock_user', JSON.stringify(mockUser));
+        localStorage.setItem('mock_token', mockToken);
         navigate('/profile');
     };
 
     const logout = () => {
         localStorage.removeItem('mock_user');
+        localStorage.removeItem('mock_token');
         setUser(null);
+        setToken(null);
         navigate('/');
     };
 
@@ -93,7 +100,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
 
     return (
-        <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, register, logout, updateUser, isLoading }}>
+        <AuthContext.Provider value={{ user, token, isAuthenticated: !!user, login, register, logout, updateUser, isLoading }}>
             {children}
         </AuthContext.Provider>
     );

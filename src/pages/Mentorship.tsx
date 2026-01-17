@@ -26,7 +26,7 @@ interface Mentorship {
 }
 
 export default function Mentorship() {
-  const { user, token } = useAuth();
+  const { token } = useAuth();
   const [mentors, setMentors] = useState<Mentorship[]>([]);
   const [availableMentors, setAvailableMentors] = useState<Mentor[]>([]);
   const [loading, setLoading] = useState(true);

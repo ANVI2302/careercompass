@@ -27,3 +27,23 @@ class UserUpdate(BaseModel):
     title: Optional[str] = None
     skills: Optional[List[str]] = None
 
+
+class NotificationSettingsBase(BaseModel):
+    email_achievements: bool = True
+    email_mentorship: bool = True
+    email_courses: bool = True
+    email_connections: bool = True
+    push_enabled: bool = True
+
+
+class PrivacySettingsBase(BaseModel):
+    profile_public: bool = True
+    show_achievements: bool = True
+    show_projects: bool = True
+    show_skills: bool = True
+
+
+class UserSettingsResponse(BaseModel):
+    notifications: NotificationSettingsBase
+    privacy: PrivacySettingsBase
+

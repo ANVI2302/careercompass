@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -31,6 +31,7 @@ interface Course {
   duration_hours: number;
   skills_covered: string[];
   rating: number;
+  url: string;
 }
 
 interface RecommendedCourse {
@@ -142,7 +143,7 @@ export function SkillGapAnalysis() {
                     Current Level: {gap.current_level}/10 → Required: {gap.required_level}/10
                   </p>
                 </div>
-                <Badge variant={gap.gap_level >= 3 ? "destructive" : "warning"}>
+                <Badge variant={gap.gap_level >= 3 ? "destructive" : "secondary"}>
                   Gap: {gap.gap_level} levels
                 </Badge>
               </div>

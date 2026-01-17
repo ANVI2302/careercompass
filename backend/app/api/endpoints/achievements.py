@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import Session
 import structlog
 
 from app.core import db
@@ -14,12 +14,12 @@ logger = structlog.get_logger()
 
 
 @router.get("/me", response_model=AchievementList)
-async def get_my_achievements(
-    db: AsyncSession = Depends(db.get_db),
+def get_my_achievements(
+    session: Session = Depends(db.get_db),
     current_user: User = Depends(deps.get_current_user)
 ):
     """Get all achievements for current user."""
-    achievements = achievement_crud.get_user_achievements(db, current_user.id)
+    achievements = achievement_crud.get_user_achievements(session, current_user.id)
     return AchievementList(
         achievements=[AchievementResponse.from_orm(a) for a in achievements],
         total_count=len(achievements)
@@ -27,14 +27,14 @@ async def get_my_achievements(
 
 
 @router.post("", response_model=AchievementResponse, status_code=201)
-async def create_achievement(
+def create_achievement(
     achievement_in: AchievementCreate,
-    db: AsyncSession = Depends(db.get_db),
+    session: Session = Depends(db.get_db),
     current_user: User = Depends(deps.get_current_user)
 ):
     """Create a new achievement (admin only in production)."""
     achievement = achievement_crud.create_achievement(
-        db,
+        session,
         user_id=current_user.id,
         title=achievement_in.title,
         description=achievement_in.description,
@@ -46,13 +46,13 @@ async def create_achievement(
 
 
 @router.get("/{achievement_id}", response_model=AchievementResponse)
-async def get_achievement(
+def get_achievement(
     achievement_id: str,
-    db: AsyncSession = Depends(db.get_db),
+    session: Session = Depends(db.get_db),
     current_user: User = Depends(deps.get_current_user)
 ):
     """Get specific achievement."""
-    achievement = achievement_crud.get_achievement(db, achievement_id)
+    achievement = achievement_crud.get_achievement(session, achievement_id)
     if not achievement:
         raise HTTPException(status_code=404, detail="Achievement not found")
     if achievement.user_id != current_user.id:
@@ -61,17 +61,17 @@ async def get_achievement(
 
 
 @router.delete("/{achievement_id}", status_code=204)
-async def delete_achievement(
+def delete_achievement(
     achievement_id: str,
-    db: Session = Depends(db.get_db),
+    session: Session = Depends(db.get_db),
     current_user: User = Depends(deps.get_current_user)
 ):
     """Delete an achievement."""
-    achievement = achievement_crud.get_achievement(db, achievement_id)
+    achievement = achievement_crud.get_achievement(session, achievement_id)
     if not achievement:
         raise HTTPException(status_code=404, detail="Achievement not found")
     if achievement.user_id != current_user.id:
         raise HTTPException(status_code=403, detail="Access denied")
     
-    achievement_crud.delete_achievement(db, achievement_id)
+    achievement_crud.delete_achievement(session, achievement_id)
     logger.info("achievement.deleted", achievement_id=achievement_id)

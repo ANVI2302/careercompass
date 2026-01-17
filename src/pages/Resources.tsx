@@ -1,4 +1,4 @@
-import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { api } from "@/lib/api";
 import { Card } from "@/components/ui/card";
@@ -19,7 +19,7 @@ interface Course {
 }
 
 export default function Resources() {
-  const { user, token } = useAuth();
+  const { token } = useAuth();
   const [courses, setCourses] = useState<Course[]>([]);
   const [recommended, setRecommended] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -102,7 +102,7 @@ export default function Resources() {
                   <p className="text-gray-500 text-xs mb-4">By {course.provider}</p>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {course.skills_covered.slice(0, 2).map((skill: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined, i: Key | null | undefined) => (
+                    {course.skills_covered.slice(0, 2).map((skill: string, i: number) => (
                       <span key={i} className="text-xs bg-green-900 text-green-200 px-2 py-1 rounded">
                         {skill}
                       </span>

@@ -16,7 +16,10 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8  # 8 days
     
     # [SECURITY] CORS origins must be explicit lists, not wildcards in prod
-    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
+        "http://localhost:5173",  # Vite dev server
+        "http://localhost:3000",  # Alternative dev
+    ]
 
     # [DEFAULTS] SQLite for rapid dev, generic URI for prod override
     DATABASE_URL: str = "sqlite+aiosqlite:///./sql_app.db"

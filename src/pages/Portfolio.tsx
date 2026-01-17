@@ -19,7 +19,7 @@ interface Project {
 }
 
 export default function Portfolio() {
-  const { user, token } = useAuth();
+  const { token } = useAuth();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);

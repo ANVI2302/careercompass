@@ -1,13 +1,8 @@
-/*
-PROJECT EON: DEEP SCIENCE ARCHITECTURE
-COMPONENT: Layout System
-*/
-
 import { Link, useLocation } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { Activity, LayoutDashboard, UserCircle, Hexagon, Terminal, Globe, Shield, Bell } from 'lucide-react'
+import { UserCircle, Hexagon, Terminal, Globe, Shield, Bell } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
 
 export default function Layout() {

@@ -14,7 +14,7 @@ interface Achievement {
 }
 
 export default function Achievements() {
-  const { user, token } = useAuth();
+  const { token } = useAuth();
   const [achievements, setAchievements] = useState<Achievement[]>([]);
   const [loading, setLoading] = useState(true);
 

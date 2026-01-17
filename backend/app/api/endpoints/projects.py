@@ -29,7 +29,7 @@ async def get_my_projects(
 @router.post("", response_model=ProjectResponse, status_code=201)
 async def create_project(
     project_in: ProjectCreate,
-    db: version = Depends(db.get_db),
+    db: AsyncSession = Depends(db.get_db),
     current_user: User = Depends(deps.get_current_user)
 ):
     """Create a new project in portfolio."""

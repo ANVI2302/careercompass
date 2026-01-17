@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -7,7 +6,6 @@ import { Label } from '@/components/ui/label'
 import { useAuth } from '@/context/AuthContext'
 
 export default function AuthPage() {
-    const navigate = useNavigate()
     const { login, register } = useAuth()
     const [isLogin, setIsLogin] = useState(false)
     const [email, setEmail] = useState('')
@@ -43,9 +41,9 @@ export default function AuthPage() {
         setIsLoading(true)
         try {
             if (isLogin) {
-                await login(email, password)
+                await login(email)
             } else {
-                await register(email, name, password)
+                await register(email, name)
             }
         } catch (error: any) {
             setErrors({ email: error.message || 'An error occurred' })

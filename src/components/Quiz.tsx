@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Loader } from '@/components/ui/loader';
 import { useToast } from '@/components/ui/use-toast';
-import { quizApi } from '@/lib/api';
 
 interface Question {
   id: string;
@@ -31,7 +30,7 @@ interface QuizSession {
 export function QuizGenerator() {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [skills, setSkills] = useState<string[]>([
+  const [skills] = useState<string[]>([
     'Python', 'JavaScript', 'Data Science', 'Web Development', 
     'Machine Learning', 'Cloud Computing', 'DevOps', 'Database Design'
   ]);
@@ -378,7 +377,7 @@ export function QuizInterface({ quizId }: { quizId: string }) {
   );
 }
 
-export function QuizResults({ quizId, result }: { quizId: string; result: any }) {
+export function QuizResults({ result }: { result: any }) {
   const navigate = useNavigate();
 
   const getPerformanceColor = () => {

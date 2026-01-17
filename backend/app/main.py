@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import structlog
 import time
 from app.core import errors
-from app.api.endpoints import system, users, auth, assessments, achievements, projects, courses, mentorship, notifications, quiz
+from app.api.endpoints import system, users, auth, assessments, achievements, projects, courses, mentorship, notifications, quiz, settings
 from app.core.config import settings
 
 # [OBSERVABILITY] Configure structlog (simplified setup)
@@ -62,6 +62,7 @@ def create_application() -> FastAPI:
     application.include_router(mentorship.router, prefix=settings.API_V1_STR + "/mentorships", tags=["mentorships"])
     application.include_router(notifications.router, prefix=settings.API_V1_STR + "/notifications", tags=["notifications"])
     application.include_router(quiz.router, prefix=settings.API_V1_STR + "/quizzes", tags=["quizzes"])
+    application.include_router(settings.router, prefix=settings.API_V1_STR + "/users", tags=["settings"])
     
     return application
 
