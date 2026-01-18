@@ -1,4 +1,7 @@
 import { Hexagon } from "lucide-react"
+import anviImage from "../components/images/anvi.png"
+import kashviImage from "../components/images/kashvi.png"
+import anshikaImage from "../components/images/anshika.png"
 
 export default function About() {
     return (
@@ -57,6 +60,86 @@ export default function About() {
                         <div className="bg-white/[0.02] border border-white/10 p-6">
                             <h4 className="font-mono text-lg font-bold">PRIVACY-CORE</h4>
                             <p className="text-sm text-muted-foreground mt-2">Your data. Your keys.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Team Section */}
+            <div className="mt-32 border-t border-white/10 pt-16">
+                <div className="text-center mb-16">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 w-fit mb-6">
+                        <span className="text-xs font-mono text-primary tracking-widest uppercase">Our Team</span>
+                    </div>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
+                        MEET THE <span className="text-muted-foreground">ARCHITECTS</span>
+                    </h2>
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                        The brilliant minds behind CareerCompass, dedicated to transforming the future of work.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    {/* Anvi Shah */}
+                    <div className="group relative">
+                        <div className="absolute inset-0 bg-primary/10 blur-xl rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-primary/50 transition-all duration-300">
+                            <div className="aspect-[3/4] overflow-hidden">
+                                <img
+                                    src={anviImage}
+                                    alt="Anvi Shah"
+                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                />
+                            </div>
+                            <div className="p-6 border-t border-white/10">
+                                <h3 className="text-xl font-bold tracking-tight">Anvi Shah</h3>
+                                <p className="text-sm text-primary font-mono mt-1">CO-FOUNDER</p>
+                                <p className="text-sm text-muted-foreground mt-3">
+                                    Architecting the future of human potential through data-driven insights.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Kashvi Shah */}
+                    <div className="group relative">
+                        <div className="absolute inset-0 bg-primary/10 blur-xl rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-primary/50 transition-all duration-300">
+                            <div className="aspect-[3/4] overflow-hidden">
+                                <img
+                                    src={kashviImage}
+                                    alt="Kashvi Shah"
+                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                />
+                            </div>
+                            <div className="p-6 border-t border-white/10">
+                                <h3 className="text-xl font-bold tracking-tight">Kashvi Shah</h3>
+                                <p className="text-sm text-primary font-mono mt-1">CO-FOUNDER</p>
+                                <p className="text-sm text-muted-foreground mt-3">
+                                    Building the operating system for transparent career navigation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Anshika Badala */}
+                    <div className="group relative">
+                        <div className="absolute inset-0 bg-primary/10 blur-xl rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden hover:border-primary/50 transition-all duration-300">
+                            <div className="aspect-[3/4] overflow-hidden">
+                                <img
+                                    src={anshikaImage}
+                                    alt="Anshika Badala"
+                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                />
+                            </div>
+                            <div className="p-6 border-t border-white/10">
+                                <h3 className="text-xl font-bold tracking-tight">Anshika Badala</h3>
+                                <p className="text-sm text-primary font-mono mt-1">CO-FOUNDER</p>
+                                <p className="text-sm text-muted-foreground mt-3">
+                                    Bridging the gap between human capital and market intelligence.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

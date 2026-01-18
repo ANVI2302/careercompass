@@ -136,7 +136,7 @@ export default function Notifications() {
       case "achievement":
         return "bg-amber-900 text-amber-200"
       case "mentorship":
-        return "bg-purple-900 text-purple-200"
+        return "bg-blue-900 text-blue-200"
       case "course_recommendation":
         return "bg-green-900 text-green-200"
       case "connection_request":
@@ -199,11 +199,10 @@ export default function Notifications() {
           {notifications.map((notif) => (
             <Card
               key={notif.id}
-              className={`border-l-4 transition-all ${
-                notif.is_read
+              className={`border-l-4 transition-all ${notif.is_read
                   ? "bg-blue-800/30 border-l-gray-600"
                   : "bg-blue-800/50 border-l-cyan-400"
-              }`}
+                }`}
             >
               <CardContent className="pt-6 pb-6">
                 <div className="flex items-start justify-between gap-4">

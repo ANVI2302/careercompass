@@ -43,8 +43,8 @@ export default function Features() {
 
                 {/* Feature 3 */}
                 <div className="p-8 border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-colors group">
-                    <div className="w-12 h-12 bg-purple-500/10 rounded-none flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
-                        <Terminal className="text-purple-500 h-6 w-6" />
+                    <div className="w-12 h-12 bg-blue-500/10 rounded-none flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
+                        <Terminal className="text-blue-500 h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-bold mb-3">API-First Architecture</h3>
                     <p className="text-muted-foreground">

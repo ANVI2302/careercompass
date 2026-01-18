@@ -69,9 +69,9 @@ export default function Dashboard() {
                                         <Radar
                                             name="Skills"
                                             dataKey="A"
-                                            stroke="#7c3aed"
+                                            stroke="#3b82f6"
                                             strokeWidth={2}
-                                            fill="#7c3aed"
+                                            fill="#3b82f6"
                                             fillOpacity={0.3}
                                         />
                                     </RadarChart>

@@ -74,10 +74,10 @@ export default function Landing() {
                         <DomainCard
                             number="01"
                             title="COMPUTATIONAL SYSTEMS"
-                            icon={<Terminal className="h-8 w-8 text-violet-400" />}
+                            icon={<Terminal className="h-8 w-8 text-blue-400" />}
                             desc="Full-stack engineering, cloud architecture, and cybersecurity operations."
                             tags={['AI/ML', 'DevOps', 'Rust']}
-                            color="violet"
+                            color="blue"
                         />
 
                         {/* Domain Card 2: AGRI */}
@@ -141,9 +141,8 @@ export default function Landing() {
 
 function DomainCard({ number, title, icon, desc, tags, color }: any) {
     const colorClasses: any = {
-        violet: 'group-hover:border-violet-500/50 group-hover:shadow-[0_0_30px_-5px_rgba(139,92,246,0.3)]',
-        emerald: 'group-hover:border-emerald-500/50 group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]',
         blue: 'group-hover:border-blue-500/50 group-hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)]',
+        emerald: 'group-hover:border-emerald-500/50 group-hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]',
     }
 
     return (
