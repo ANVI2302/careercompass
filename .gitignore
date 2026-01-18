@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+venv/
+.venv/
+backend/.venv/
+backend/venv/
+
+# Environment Variables (NEVER COMMIT THESE!)
+.env
+.env.local
+.env.production
+.env.development
+backend/.env
+backend/.env.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+sql_app.db
+backend/sql_app.db
+
+# Build Output
+dist/
+build/
+*.pyc
+__pycache__/
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.cache/
+.temp/
+.tmp/
+
+# Keep templates (these are safe)
+!.env.example
+!.env.template
+!.env.production.template
